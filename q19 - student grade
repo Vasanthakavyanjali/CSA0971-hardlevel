@@ -1,0 +1,77 @@
+import java.util.Scanner;
+interface getStudName 
+{  
+    void getname(String Sname);
+}
+
+interface getStudMarks {
+    void getmarks(int m1, int m2, int m3, int m4, int m5);
+    void grade();
+}
+class Calculate implements getStudName, getStudMarks 
+{
+    private String studname;
+    private int mark1, mark2, mark3, mark4, mark5;
+    public void getname(String Sname) 
+     {	
+        this.studname = Sname;
+      }
+      public void getmarks(int m1, int m2, int m3, int m4, int m5) 
+      {
+        this.mark1 = m1;
+        this.mark2 = m2;
+        this.mark3 = m3;
+        this.mark4 = m4;
+        this.mark5 = m5;
+       }
+       public void grade() 
+       {
+         int total = mark1 + mark2 + mark3 + mark4 + mark5;
+         int avg = total / 5;
+         System.out.println("Student:"+studname);
+         if (avg >= 90) 
+         {
+            System.out.println("Distinction");
+          } 
+          else if (avg<90 && avg >= 80)
+          {
+            System.out.println("First division");
+           }
+           else if (avg<80 && avg >= 70)
+           {
+            System.out.println("Second division");
+            }
+            else if (avg<70 && avg >= 60)
+            {
+            System.out.println("Third division");
+             }
+             else if (avg<60 && avg >= 50)
+             {
+              System.out.println("pass");
+              }
+               else 
+               {
+               System.out.println("Fail");
+               }
+           }
+  }
+public class main2 {
+    public static void main(String[] args) {
+        int ma1, ma2, ma3, ma4, ma5;
+        String nameofstudent;
+        Scanner S = new Scanner(System.in);
+        System.out.println("Enter marks of student one by one:");
+        ma1 = S.nextInt();
+        ma2 = S.nextInt();
+        ma3 = S.nextInt();
+        ma4 = S.nextInt();
+        ma5 = S.nextInt();
+        S.nextLine();  
+        System.out.println("Enter student name:");
+        nameofstudent = S.nextLine();
+        Calculate C = new Calculate(); 
+        C.getname(nameofstudent);
+        C.getmarks(ma1, ma2, ma3, ma4, ma5);
+        C.grade();
+    }
+}
